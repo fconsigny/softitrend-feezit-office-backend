@@ -1,0 +1,445 @@
+{
+  "status": "tests-passed-independent-review-approved",
+  "scope": "François seul; validation isolée; aucun provisioning réel, déploiement, commit ou push",
+  "office": {
+    "tests": 80,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "office-parent-review-final-verify.log"
+  },
+  "frontend": {
+    "tests": 33,
+    "browserBoundaryScenarios": 2,
+    "lint": "PASS",
+    "build": "PASS",
+    "log": "office-parent-final-frontend.log"
+  },
+  "feezit_h2": {
+    "tests": 132,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "smokeHttpRequests": 67,
+    "smokeAssertions": 102,
+    "log": "office-parent-feezit-final-verify.log"
+  },
+  "feezit_postgresql": {
+    "command": [
+      "./mvnw",
+      "clean",
+      "test"
+    ],
+    "database": "PostgreSQL 15.19 (Debian 15.19-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+    "image": "sha256:c961aa287d8698297cb26cdfadfbe9fd2cbaf77e53cfffe9636e8d8a1e4d842c",
+    "container": "feezit-pg-test-08c6156385e048a0bbde32b97119007e",
+    "exit_code": 0,
+    "totals": {
+      "tests": 132,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "real_integration": {
+    "result": "PASS",
+    "httpChecks": 61,
+    "browserScenarios": 1,
+    "realServers": [
+      "Feezit jar dev/H2 disposable",
+      "Office jar test",
+      "React Vite",
+      "Chromium"
+    ],
+    "emailProvider": "disabled; no email sent",
+    "credentials": "synthetic only",
+    "evidence": "/home/stellabot/.hermes/cache/scratch/office-integration-evidence-gduw7478",
+    "checks": [
+      {
+        "server": "feezit",
+        "method": "POST",
+        "path": "/api/auth/register",
+        "status": 201
+      },
+      {
+        "server": "feezit",
+        "method": "POST",
+        "path": "/api/auth/register",
+        "status": 201
+      },
+      {
+        "server": "feezit",
+        "method": "POST",
+        "path": "/api/auth/register",
+        "status": 201
+      },
+      {
+        "server": "feezit",
+        "method": "POST",
+        "path": "/api/auth/register",
+        "status": 201
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/session",
+        "status": 401
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/csrf",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/auth/login",
+        "status": 403
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/auth/login",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/session",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/csrf",
+        "status": 200
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/management/accounts",
+        "status": 401
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/management/promos",
+        "status": 401
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/management/incidents",
+        "status": 401
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts?page=0&size=20",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "PUT",
+        "path": "/office-api/management/brands/aliases",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/brands",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/waitlist",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/waitlist?store=Isolated%20brand",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/waitlist/responses",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/waitlist/responses?store=Isolated%20brand",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/reservations",
+        "status": 201
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/promos?page=0&size=20",
+        "status": 200
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/promos/a2fca5c9-12bb-4f67-9c28-2277996af6f3",
+        "status": 404
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/reservations",
+        "status": 409
+      },
+      {
+        "server": "feezit",
+        "method": "PUT",
+        "path": "/api/me/promos/a2fca5c9-12bb-4f67-9c28-2277996af6f3",
+        "status": 200
+      },
+      {
+        "server": "feezit",
+        "method": "POST",
+        "path": "/api/creators/officemain/views",
+        "status": 204
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/r/promos/a2fca5c9-12bb-4f67-9c28-2277996af6f3",
+        "status": 302
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts/4de05c72-1b82-469d-85d3-7e48fd42b938/stats",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/promos/a2fca5c9-12bb-4f67-9c28-2277996af6f3/reports",
+        "status": 202
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/incidents?page=0&size=20",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/outbox",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/email-deliveries",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "PUT",
+        "path": "/office-api/management/outbox/2f80c32a-a860-4e15-8ac5-c346c655942b/sent",
+        "status": 409
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/outbox",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/incidents",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "PUT",
+        "path": "/office-api/management/promos/a2fca5c9-12bb-4f67-9c28-2277996af6f3/resolve",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/incidents",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "PUT",
+        "path": "/office-api/management/accounts/4de05c72-1b82-469d-85d3-7e48fd42b938/moderation",
+        "status": 204
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/creators/officemain",
+        "status": 404
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts?q=officemain",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts/4de05c72-1b82-469d-85d3-7e48fd42b938/moderation",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "DELETE",
+        "path": "/office-api/management/accounts/4de05c72-1b82-469d-85d3-7e48fd42b938/moderation",
+        "status": 204
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/creators/officemain",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/promos/a2fca5c9-12bb-4f67-9c28-2277996af6f3/fraud-removal",
+        "status": 400
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/promos",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/promos/a2fca5c9-12bb-4f67-9c28-2277996af6f3/fraud-removal",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/promos",
+        "status": 200
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/me/profile",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts/4de05c72-1b82-469d-85d3-7e48fd42b938/stats",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/outbox",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "PUT",
+        "path": "/office-api/management/accounts/07a7045b-d020-458d-b9c9-66c59a6cbcb7/ban",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts?q=07a7045b-d020-458d-b9c9-66c59a6cbcb7",
+        "status": 200
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/me/profile",
+        "status": 401
+      },
+      {
+        "server": "office",
+        "method": "DELETE",
+        "path": "/office-api/management/accounts/07a7045b-d020-458d-b9c9-66c59a6cbcb7/ban",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts?q=07a7045b-d020-458d-b9c9-66c59a6cbcb7",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/accounts/07a7045b-d020-458d-b9c9-66c59a6cbcb7/profile",
+        "status": 201
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts?q=07a7045b-d020-458d-b9c9-66c59a6cbcb7",
+        "status": 200
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/management/jobs/run",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "POST",
+        "path": "/office-api/auth/logout",
+        "status": 204
+      },
+      {
+        "server": "office",
+        "method": "GET",
+        "path": "/office-api/management/accounts",
+        "status": 401
+      },
+      {
+        "server": "feezit",
+        "method": "GET",
+        "path": "/api/me/promos",
+        "status": 200
+      }
+    ]
+  },
+  "corrections": [
+    "202 vide de reports conservé au lieu de 502, RED puis GREEN",
+    "Attestation manuelle non proposée dans UI car garde Feezit renvoie toujours 409, RED UI puis GREEN"
+  ],
+  "remaining": [
+    "Audit durable FO-07 non implémenté",
+    "Sessions mémoire; pas MFA/SSO/équipe",
+    "Provisioning et déploiement réel non demandés",
+    "Aucun email fournisseur envoyé; attestation manuelle refusée par Feezit",
+    "Pas audit accessibilité/CVE exhaustif"
+  ],
+  "review": {
+    "passed": true,
+    "security_concerns": [],
+    "logic_errors": [],
+    "mode": "read-only; tests read not executed by reviewer",
+    "delegation": "deleg_10730f68",
+    "suggestions": "Both adopted: 3 additional negative HTTP regression tests + Chromium notice/no manual attestation checks; Office verify and real integration rerun successfully; production code unchanged after approval."
+  }
+}

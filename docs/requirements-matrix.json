@@ -1,0 +1,483 @@
+{
+  "sources": [
+    {
+      "source": "prospection-24h-2026-10-10.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Feezit — Prospection des dernières 24 heures — 10 octobre 2026",
+        "## Run 20261010T063006Z-scheduled",
+        "## Collecte et mise à jour",
+        "## Contacts et exclusions",
+        "## Envois du présent run",
+        "## Preuves et réconciliation",
+        "## Liste finale des emails échoués ou non confirmés pendant ce run"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "feezit-prospection-mail-template.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Feezit — Template du mail de prospection",
+        "## Objet",
+        "## Corps du mail",
+        "## Préparation de la collecte des dernières 24 heures — 8 octobre 2026",
+        "## Vérifications internes avant envoi"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "prospection-a-la-demande-20261009T060940Z-73vIlAFqb-8.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Feezit — Traitement à la demande — Amistory",
+        "## Résultats et preuves",
+        "## Modifications et compteurs vérifiés par Python",
+        "## Réserves avant tout futur envoi",
+        "## Envois échoués ou non confirmés",
+        "## Envoi non tenté"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "conditions-conventions-candidatures/feezit-modalites-retrait-fiche-statistiques.md",
+      "classification": "current",
+      "sections": [],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "conditions-conventions-candidatures/feezit-conditions-gratuite.md",
+      "classification": "current",
+      "sections": [],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "conditions-conventions-candidatures/feezit-convention-participation.md",
+      "classification": "current",
+      "sections": [],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "feezit.md",
+      "classification": "historical-or-future",
+      "sections": [
+        "# Feezit — Offre pour les créateurs de contenu",
+        "## 1. Présentation",
+        "## 2. Fonctionnalités clés",
+        "## 3. Public cible",
+        "## 4. Problème résolu",
+        "## 5. Valeur apportée",
+        "## 6. Stratégie de lancement",
+        "## 7. Modèle économique",
+        "## Documents associés",
+        "### Participation — documents fondés sur l’offre approuvée",
+        "### Autres documents du projet"
+      ],
+      "reason": "Ne remplace pas la participation actuelle ; monétisation, SSO et multi-réseaux différés"
+    },
+    {
+      "source": "feezit-condition-juridique-et-template-contrat.md",
+      "classification": "historical-or-future",
+      "sections": [
+        "# Feezit — Conditions juridiques et template de contrat",
+        "## 1. Pourquoi encadrer l’offre par écrit",
+        "### Ce que la convention doit permettre au créateur de comprendre",
+        "## 2. Attention au porteur juridique : « Société en construction »",
+        "## 3. Décisions commerciales à arrêter",
+        "### 3.1 Page gratuite",
+        "### 3.2 Statistiques de clics",
+        "### 3.3 Trois mois sur les options payantes",
+        "### 3.4 Exclusivité",
+        "## 4. Prospection, données et publication : points approfondis",
+        "### 4.1 Courriels de prospection",
+        "### 4.2 Données issues des chaînes YouTube",
+        "### 4.3 Mesure d’audience et traceurs",
+        "### 4.4 Aperçu et droits sur les contenus",
+        "### 4.5 Documents complémentaires",
+        "## 5. Template — Convention de participation au programme Créateur Fondateur Feezit",
+        "### Article 1 — Parties",
+        "### Article 2 — Objet et admission",
+        "### Article 3 — Prise d’effet et durée",
+        "### Article 4 — Page gratuite et publication",
+        "### Article 5 — Statistiques",
+        "### Article 6 — Avantage de trois mois",
+        "### Article 7 — Absence d’exclusivité par défaut",
+        "### Article 8 — Contenus, codes et autorisation limitée",
+        "### Article 9 — Obligations réciproques et limites du service",
+        "### Article 10 — Données personnelles",
+        "### Article 11 — Évolution, suspension et résiliation",
+        "### Article 12 — Responsabilité et différends",
+        "### Article 13 — Documents et acceptation",
+        "## 6. Annexe A — Fiche individuelle des avantages",
+        "## 7. Emails cohérents avec les conditions",
+        "### 7.1 Avant la finalisation de la convention",
+        "### 7.2 Une fois la convention finalisée",
+        "## 8. Preuve, validation et archivage",
+        "## 9. Checklist avant diffusion",
+        "## 10. Références et limites de la recherche",
+        "### Textes officiels",
+        "### Recommandations de l’autorité de protection des données"
+      ],
+      "reason": "Ne remplace pas la participation actuelle ; monétisation, SSO et multi-réseaux différés"
+    },
+    {
+      "source": "kit-vente-feezit.md",
+      "classification": "historical-or-future",
+      "sections": [],
+      "reason": "Ne remplace pas la participation actuelle ; monétisation, SSO et multi-réseaux différés"
+    },
+    {
+      "source": "Office/feezit-office-cadrage-fonctionnel.md",
+      "classification": "current",
+      "sections": [
+        "# Feezit Office — cadrage fonctionnel",
+        "## Lecture des statuts",
+        "## Besoins initiaux et scénarios proposés",
+        "## Existant documentaire à ne pas confondre avec Office",
+        "## Hiérarchie des sources",
+        "## Navigation et sources métier"
+      ],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "Office/feezit-office.md",
+      "classification": "current",
+      "sections": [
+        "# Feezit Office",
+        "## Mission confirmée",
+        "## Dépôts",
+        "## Cadre technique hérité de Feezit",
+        "## Périmètre à préciser progressivement",
+        "## Références et navigation"
+      ],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "Office/feezit-office-architecture-securite.md",
+      "classification": "current",
+      "sections": [
+        "# Feezit Office — architecture et sécurité",
+        "## Invariants de conception",
+        "## Intégration : orientation proposée, à arbitrer",
+        "## Frontières de sécurité",
+        "## Décisions encore ouvertes",
+        "## Politique de tests future",
+        "## Navigation"
+      ],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "prospection-envois-2026-10-08.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Prospection Feezit — journal d’envoi du 8 octobre 2026",
+        "## Bilan vérifié",
+        "## Périmètre",
+        "## Interruption",
+        "## Reprise sans doublon",
+        "## Journal technique",
+        "## Détail"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "prospection-contacts.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Feezit — Contacts de prospection",
+        "## Bilan de la recherche du 8 octobre 2026",
+        "## Contacts renseignés",
+        "## À compléter ou vérifier manuellement",
+        "## Avant vos envois",
+        "## Archives de recherche",
+        "## Contact à la demande — 9 octobre 2026 — Amistory"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "kit-commercial-feezit.md",
+      "classification": "historical-or-future",
+      "sections": [],
+      "reason": "Ne remplace pas la participation actuelle ; monétisation, SSO et multi-réseaux différés"
+    },
+    {
+      "source": "plan-implementation-feezit.md",
+      "classification": "historical-or-future",
+      "sections": [
+        "# Feezit — Plan d'implémentation frontend et backend",
+        "## 1. Objet et statut",
+        "## 2. Ce qui ressort du croisement",
+        "### 2.1 Priorité commune",
+        "### 2.2 Écarts documentaires à ne pas résoudre implicitement",
+        "## 3. Priorités proposées",
+        "## 4. Backlog croisé frontend / backend",
+        "### 4.1 Identité et pages publiques",
+        "### 4.2 Codes, découverte et preuve de valeur",
+        "### 4.3 Suivis, monitoring, offres et diffusion",
+        "## 5. Règles métier à fixer avant de coder",
+        "### 5.1 Compte, droits et propriété",
+        "### 5.2 Marque réservée et code unique",
+        "### 5.3 Dates et visibilité",
+        "### 5.4 Clic, copie et revenu",
+        "### 5.5 Mesure sans cookie et vie privée",
+        "### 5.6 Fondateurs et monétisation",
+        "## 6. Modèle de données cible proposé",
+        "## 7. Contrats frontend / backend à prévoir",
+        "## 8. Ordre de réalisation proposé",
+        "### Lot 0 — Cadrage et socle",
+        "### Lot 1 — Page et publication réelles",
+        "### Lot 2 — Codes, marques et recrutement",
+        "### Lot 3 — Clics mesurés et lancement",
+        "### Lot 4 — Monitoring et fidélisation",
+        "### Lot 5 — Offres et diffusion",
+        "## 9. Critères de recette transversaux",
+        "## 10. Questions de validation prioritaires",
+        "## 11. Documents liés et références",
+        "### Repères de lecture des sources internes",
+        "## Sources"
+      ],
+      "reason": "Ne remplace pas la participation actuelle ; monétisation, SSO et multi-réseaux différés"
+    },
+    {
+      "source": "prospection-24h-2026-10-08.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Feezit — Collecte et prospection des dernières 24 heures",
+        "## Périmètre et nouvelle règle",
+        "## Résultats vérifiés de la collecte",
+        "## Résultat des envois",
+        "## Liste finale des envois non confirmés",
+        "## Exclusions et réserves",
+        "## Détail par créateur",
+        "## Preuves et journaux"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "prospection-24h-2026-10-09.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Feezit — Collecte matinale et prospection des dernières 24 heures",
+        "## Run `20261009T063006Z-scheduled`",
+        "### Fenêtre fixe et périmètre",
+        "### Recherche et table — chiffres réconciliés",
+        "### Brouillons et modèle vivant",
+        "### Contacts professionnels et exclusions",
+        "### Envois du présent run",
+        "### Preuves, sauvegarde et audit",
+        "### Liste finale des emails échoués ou non confirmés — présent run"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "developpement/charte-bot-developpement-feezit.md",
+      "classification": "current",
+      "sections": [
+        "# Charte du bot de développement Feezit",
+        "## Mission et état",
+        "## Décisions imposées",
+        "## Architecture de travail prescrite, à confronter au code",
+        "## Sécurité",
+        "## Politique de vérification",
+        "## Documentation attendue",
+        "## Définition de terminé",
+        "## Navigation"
+      ],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "developpement/feezit-livraison-fonctionnalites-2026-10-09.md",
+      "classification": "current",
+      "sections": [
+        "# Feezit — fonctionnalités et livraison du 9 octobre 2026",
+        "## Périmètre et sources",
+        "## Changements constatés et décisions ciblées",
+        "### Édition des offres — CUR-14",
+        "### Présentation honnête — UX-04",
+        "### Retrait d'une fraude établie — CUR-27",
+        "### Transport email — CUR-33",
+        "## Vérifications effectivement exécutées par le parent",
+        "## Production et limites",
+        "## Contrôle de préparation avant livraison conditionnelle",
+        "## État actuel — livraison exécutée",
+        "### Livraison et contrôles techniques",
+        "### Sauvegardes et reprise",
+        "### Limites explicites",
+        "## Navigation"
+      ],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "prospection-createurs.md",
+      "classification": "operational-excluded",
+      "sections": [
+        "# Feezit — Prospection des créateurs",
+        "## Objectif",
+        "## Critères de sélection",
+        "## Collecte du 7 octobre 2026 — quatorze derniers jours",
+        "### Collecte nocturne programmée du 8 octobre 2026 — seuil atteint",
+        "### Test ponctuel nocturne du 7 octobre 2026 — PARTIEL",
+        "### Collecte du 8 octobre 2026 — dernières 24 heures, règle sans exclusivité de marque",
+        "### Collecte du 10 octobre 2026 — dernières 24 heures",
+        "### Guide de saisie",
+        "### Sources de vérification",
+        "#### _Snooky_ — SOP-PAN [1]",
+        "#### Abélia — BIENVENUE10 [2]",
+        "#### AKRAMJUNIOR DAILY — akram [3]",
+        "#### Alexandra — ALEXANDRAROPELE [4]",
+        "#### Altis replay (chaîne secondaire) — ALTISPLAY [5]",
+        "#### Anthony Frontera — FRONTERA15 [6]",
+        "#### Arthur Ray — ArthurRay5 [7]",
+        "#### Aude Jatteau — PAN-HFX85 [8]",
+        "#### AYMANOS — AYMANOS [9]",
+        "#### Batok — batok [10]",
+        "#### Beauty with Jenny — JENBEAUTYADDICT [11]",
+        "#### Beautyyy Gold — BEAUTYGOLD [12]",
+        "#### Beauté bio — BEAUTEB10 [13]",
+        "#### Benjam en Bikepacking — LYOBENJAMIN [14]",
+        "#### Bienvenue chez Vero YTB — VERO10 [15]",
+        "#### Blastz — Blastz5 [16]",
+        "#### Brushclub — brushclub5 [17]",
+        "#### Bérébeauté — BEREBEAUTY [18]",
+        "#### Cassiecosmetics — CASS-PAN [19]",
+        "#### Celetik — Celetik5 [20]",
+        "#### celine et ses petites combines — CELINECOMBINES [21]",
+        "#### Conjureuse — CONJUREUSE [22]",
+        "#### CoronaGymOff — CORONA [23]",
+        "#### dahmien7 — DAHMIEN5 [24]",
+        "#### Ecki - News Auto — ECKI20 [25]",
+        "#### Edouard_EMB — EMB [26]",
+        "#### Emilie Colo — FR260BDD [27]",
+        "#### Eric Flag Off — ERICFLAG10 [28]",
+        "#### eSIMrat — ESIMRAT [29]",
+        "#### Euphrao's stuff — euphra5 [30]",
+        "#### Fight Minds — NMA_FM5 [31]",
+        "#### FitzAdri — PKFITZ [32]",
+        "#### Fluffy — FLUFFY5 [33]",
+        "#### FromHumanToGod — GOD10 [34]",
+        "#### GLB — GLB [35]",
+        "#### Gwendo — BRETONNE15 [36]",
+        "#### Hugo Délire — HugoDelire5 [37]",
+        "#### I.K.I. déco — IKI15 [38]",
+        "#### Iron Classic Formich — IRONCLASSIC [39]",
+        "#### Isa et ses passions🌺 — ISA5TM [40]",
+        "#### Jay - CursedLab — JAY4 [41]",
+        "#### JirayaTV — Jiraya5 [42]",
+        "#### John Joodan — joodan [43]",
+        "#### KAPPA Studio — YTBKPS [44]",
+        "#### Kiibiki TCG — Kiibiki [45]",
+        "#### La Sueur+ — lasueur [46]",
+        "#### La Wargame Room — Lawargameroom5 [47]",
+        "#### Ladyblogue — DELPHINECB [48]",
+        "#### Laura R — LAURAR [49]",
+        "#### Le chant du cliquet — SIMON5 [50]",
+        "#### Le Monde de Clochette — BYCLO10 [51]",
+        "#### Les Bouilles en Live — GEL5 [52]",
+        "#### LimuluTV — LIMULU5 [53]"
+      ],
+      "reason": "Prospection et envois hors exigences Office"
+    },
+    {
+      "source": "feezit-base-donnees-production.md",
+      "classification": "current",
+      "sections": [
+        "# Feezit — base de données de production",
+        "## État actuel après bascule du 9 octobre 2026",
+        "## Décisions de François",
+        "## État du raccordement distant",
+        "### Sauvegardes et restauration vérifiées",
+        "## Architecture et patterns implémentés localement",
+        "### Séparation explicite par profils",
+        "### Frontière de dialecte dans les adaptateurs",
+        "### Compatibilité du contrat management",
+        "### Migrations versionnées séparées",
+        "### Configuration de livraison préparée, non activée",
+        "## Vérification réelle par le parent",
+        "## Décisions clôturées et étapes restantes",
+        "## Navigation"
+      ],
+      "reason": "Décisions métier et sécurité actuelles"
+    },
+    {
+      "source": "specifications-fonctionnelles-feezit.md",
+      "classification": "historical-or-future",
+      "sections": [],
+      "reason": "Ne remplace pas la participation actuelle ; monétisation, SSO et multi-réseaux différés"
+    }
+  ],
+  "features": [
+    {
+      "id": "FO-01",
+      "feature": "Accès François seul",
+      "source": "Office/feezit-office-architecture-securite.md §Frontières + décision utilisateur du 10 octobre",
+      "status": "current",
+      "responsibility": "Session serveur mono-opérateur, CSRF, pas inscription",
+      "scenario": "Sans session/refus CSRF/échec login/logout => aucune donnée privée",
+      "proof": "Tests comportementaux + recette vraie stack isolée : docs/parent-verification.json et docs/evidence/real-integration.json"
+    },
+    {
+      "id": "FO-02",
+      "feature": "Statistiques privées",
+      "source": "conditions-conventions-candidatures/feezit-convention-participation.md §7",
+      "status": "current",
+      "responsibility": "Lecture API stats avec période, tableau quotidien",
+      "scenario": "Visites et sorties distinctes ; aucune vente/revenu",
+      "proof": "Tests comportementaux + recette vraie stack isolée : docs/parent-verification.json et docs/evidence/real-integration.json"
+    },
+    {
+      "id": "FO-03",
+      "feature": "Réservation après accord",
+      "source": "conditions-conventions-candidatures/feezit-convention-participation.md §4 et §8",
+      "status": "current",
+      "responsibility": "Formulaire accord/version/date et API réservation",
+      "scenario": "Draft créé ; conflit marque refusé ; pas publication automatique",
+      "proof": "Tests comportementaux + recette vraie stack isolée : docs/parent-verification.json et docs/evidence/real-integration.json"
+    },
+    {
+      "id": "FO-04",
+      "feature": "Marques, alias, attente et réponses",
+      "source": "conditions-conventions-candidatures/feezit-conditions-gratuite.md §4",
+      "status": "current",
+      "responsibility": "API marques/alias/attente/réponses",
+      "scenario": "Pas ancienneté ; dates email conservées ; aucune attribution automatique",
+      "proof": "Tests comportementaux + recette vraie stack isolée : docs/parent-verification.json et docs/evidence/real-integration.json"
+    },
+    {
+      "id": "FO-05",
+      "feature": "Signalement et modération",
+      "source": "conditions-conventions-candidatures/feezit-modalites-retrait-fiche-statistiques.md §3–6",
+      "status": "current",
+      "responsibility": "Signalement, résolution, modération, fraude, ban/unban, nouveau profil",
+      "scenario": "Confirmation sensible ; refus serveur ; conséquences distinctes",
+      "proof": "Tests comportementaux + recette vraie stack isolée : docs/parent-verification.json et docs/evidence/real-integration.json"
+    },
+    {
+      "id": "FO-06",
+      "feature": "Notifications et jobs",
+      "source": "Office/feezit-office-cadrage-fonctionnel.md FO-06 + code EmailManagementController",
+      "status": "current",
+      "responsibility": "Outbox et suivi transport en lecture, jobs avec confirmation ; attestation manuelle UI désactivée (garde Feezit409)",
+      "scenario": "Pending jamais envoyé ; confirmation seulement après émission réelle",
+      "proof": "Tests comportementaux + recette vraie stack isolée : docs/parent-verification.json et docs/evidence/real-integration.json ; pending confirmé, garde409 sans mutation relue ; fournisseur désactivé, aucun email envoyé"
+    },
+    {
+      "id": "FO-07",
+      "feature": "Audit nominatif durable",
+      "source": "Office/feezit-office-cadrage-fonctionnel.md FO-07",
+      "status": "proposed-deferred",
+      "responsibility": "Pas base propre ni durée inventée",
+      "scenario": "Non réalisé ; auteur unique connu ne vaut pas journal durable",
+      "proof": "DIFFÉRÉ : aucun journal durable ni durée de conservation inventée"
+    },
+    {
+      "id": "FO-08",
+      "feature": "Répertoire interne comptes/offres/incidents",
+      "source": "plan-implementation-feezit.md FEZ-14 ; déduction management",
+      "status": "implementation-deduction",
+      "responsibility": "Lecture management paginée à ajouter dans Feezit, façade Office, listes UI",
+      "scenario": "Créateur Bearer refusé ; hidden/draft visibles seulement management ; DTO sans hash/token",
+      "proof": "Tests comportementaux + recette vraie stack isolée : docs/parent-verification.json et docs/evidence/real-integration.json"
+    }
+  ],
+  "verification_status": "executed; independent recheck approved; supplemental negative HTTP and real Chromium regressions passed"
+}

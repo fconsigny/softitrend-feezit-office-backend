@@ -1,0 +1,17 @@
+{
+  "command": [
+    "./mvnw",
+    "clean",
+    "test"
+  ],
+  "database": "PostgreSQL 15.19 (Debian 15.19-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "image": "sha256:c961aa287d8698297cb26cdfadfbe9fd2cbaf77e53cfffe9636e8d8a1e4d842c",
+  "container": "feezit-pg-test-08c6156385e048a0bbde32b97119007e",
+  "exit_code": 0,
+  "totals": {
+    "tests": 132,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

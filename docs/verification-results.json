@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-10",
+  "toolchain": {
+    "java": "25.0.2",
+    "maven": "3.9.16",
+    "springBoot": "4.1.1",
+    "springSecurity": "7.1.1"
+  },
+  "command": "scripts/mvn.sh clean verify",
+  "totals": {
+    "tests": 75,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.softitrend.office.ArchitectureGateTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.softitrend.office.DisabledOperatorHttpTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.softitrend.office.LoginRateLimitHttpTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.softitrend.office.SessionHttpTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.softitrend.office.ManagementHttpTest",
+      "tests": "56",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.softitrend.office.infrastructure.CredentialConfigurationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.softitrend.office.infrastructure.ConfigurationSafetyTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "jarSmoke": {
+    "checks": 14,
+    "command": "python3 scripts/smoke-http.py --log-dir /home/stellabot/.hermes/cache/scratch/office-jar-smoke",
+    "upstream": "disabled; business integration not exercised"
+  },
+  "logsRoot": "/home/stellabot/.hermes/cache/scratch",
+  "realFeezitIntegration": "pending parent validation on isolated Feezit"
+}

@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-12",
+  "scope": "softitrend-feezit-office-backend only; no deployment, commit or push",
+  "result": "passed",
+  "toolchain": {"java": "25.0.2", "maven": "3.9.16", "springBoot": "4.1.1"},
+  "contract": {
+    "read": "GET /office-api/management/promos/{UUID}: 200 existing internal Promo DTO including draft/masked",
+    "content": "PUT /office-api/management/promos/{UUID}/content: 200 existing Promo DTO; required articleDescription/articleImage strings, empty allowed; actual business validation in Feezit",
+    "reservation": "POST reservations forwards optional articleDescription/articleImage unchanged; omission remains omission; Feezit defaults empty; no injected dates or publication fields",
+    "queries": "No query parameters on either new route",
+    "security": "Operator session; CSRF for PUT; fixed server management secret; browser Authorization and management secret not forwarded"
+  },
+  "tdd": [
+    {
+      "slice": "read internal promo DTO",
+      "command": "scripts/mvn.sh -Dtest=ManagementHttpTest#readsInternalPromoWithoutChangingPublicationStatus test",
+      "red": {"tests": 2, "failures": 2, "errors": 0, "expected": "200", "actual": "403; capability missing"},
+      "green": {"tests": 2, "failures": 0, "errors": 0},
+      "logs": ["office-promo-get-red.log", "office-promo-get-green.log"]
+    },
+    {
+      "slice": "update content with exact JSON and unchanged returned draft DTO",
+      "command": "scripts/mvn.sh -Dtest=ManagementHttpTest#updatesOnlyPromoContentAndPreservesDraftDto test",
+      "red": {"tests": 2, "failures": 2, "errors": 0, "expected": "200", "actual": "403; capability missing"},
+      "green": {"tests": 2, "failures": 0, "errors": 0},
+      "logs": ["office-promo-put-red.log", "office-promo-put-green.log"]
+    },
+    {
+      "slice": "reject empty upstream JSON success without changing 204 or accepted-empty-report exceptions",
+      "redCommand": "scripts/mvn.sh verify",
+      "red": {"tests": 101, "failures": 1, "errors": 0, "expected": "502", "actual": "200 empty JSON success"},
+      "rootCause": "Local JShell probe with installed Jackson 3.1.5: readTree of empty/whitespace strings returns non-null MissingNode. Existing null-only guard accepted it.",
+      "fix": "Reject MissingNode in FeezitHttpGateway.safeSuccess; preserve existing 204 and route-specific 202 empty report exceptions",
+      "greenCommand": "scripts/mvn.sh -Dtest=ManagementHttpTest#promoReadsAndContentNeverReportUnsafeUpstreamResponsesAsSuccess test",
+      "green": {"tests": 1, "failures": 0, "errors": 0},
+      "logs": ["office-promo-verify.log", "office-promo-empty-green.log"]
+    }
+  ],
+  "verification": {
+    "command": "scripts/mvn.sh verify",
+    "exitCode": 0,
+    "build": "BUILD SUCCESS",
+    "finishedAt": "2026-10-12T20:49:14Z",
+    "tests": 101,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "managementHttpTests": 82,
+    "newPromoContractTestInvocations": 21,
+    "summarySource": "target/surefire-reports/TEST-*.xml parsed programmatically",
+    "log": "/home/stellabot/.hermes/cache/scratch/office-promo-verify-green.log",
+    "artifact": "target/feezit-office-backend-0.1.0-SNAPSHOT.jar",
+    "artifactSha256": "8c2e601f49a0796f6ff87205fe58d75f3993ced4deb9a950cc33014a604f5690"
+  },
+  "coverage": [
+    "Read draft and masked Promo DTOs unchanged, nullable dates, no-store",
+    "Forward nonempty Unicode content and empty strings byte-for-byte",
+    "Reservations with and without optional content fields, unchanged draft response",
+    "GET/PUT extra, duplicate and encoded unknown query rejection before upstream",
+    "Reject other methods including HEAD/OPTIONS, malformed UUIDs, encoded paths and arbitrary subroutes before upstream",
+    "Session authorization, creator Bearer and browser secret insufficient, missing/invalid CSRF, revoked session",
+    "Retain JSON object envelope, reject malformed/non-object/trailing JSON, wrong content type and oversized body",
+    "Preserve sanitized upstream 400/404/409/422 statuses and existing error-code policy; 500 maps to 502",
+    "Reject empty/whitespace/malformed/secret-reflecting success replies, map timeout to 504",
+    "Existing architecture/configuration/session/rate-limit tests and accepted-empty-report exception remain green"
+  ],
+  "jarSmoke": {
+    "command": "python3 scripts/smoke-http.py --log-dir $TMPDIR/office-promo-smoke",
+    "checks": 14,
+    "result": "passed",
+    "upstream": "disabled; business integration not exercised",
+    "checksFile": "/home/stellabot/.hermes/cache/scratch/office-promo-smoke/checks.json",
+    "cleanup": "Smoke runner terminates and waits for the isolated jar in finally"
+  },
+  "filesModified": [
+    "src/main/java/com/softitrend/office/domain/ManagementRoute.java",
+    "src/main/java/com/softitrend/office/adapters/http/ManagementController.java",
+    "src/main/java/com/softitrend/office/adapters/upstream/FeezitHttpGateway.java",
+    "src/test/java/com/softitrend/office/ManagementHttpTest.java",
+    "docs/office-api-contract.md"
+  ],
+  "filesCreated": ["docs/promo-content-verification.json"],
+  "preservation": "Repository sources were entirely preexisting untracked files. Scratch snapshot comparison confirmed only the five listed preexisting files changed; no source deletion or Git staging.",
+  "issuesEncountered": [
+    "Initial added error assertions assumed upstream error codes were copied. Corrected tests to the existing status-derived sanitized codes/messages; production error policy unchanged.",
+    "Discovered and fixed Jackson MissingNode empty-success acceptance through observed failing verification and local parser probe.",
+    "Existing Mockito dynamic-agent/CDS warnings and intentional simulated network-close warning remain; verification passed."
+  ],
+  "limits": [
+    "ManagementHttpTest uses a real Office server and a simulated HTTP upstream; it does not establish Feezit business validation or persisted publication/date invariants.",
+    "Real Feezit/backend/frontend integration for the new content contract remains the parent agent's isolated acceptance task.",
+    "No production access, deployment, commit or push. Raw logs are scratch evidence and may be pruned; this summary persists actual results."
+  ]
+}
