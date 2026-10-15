@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0 — 2026-10-15
+
+- Alignement sur la livraison produit 0.7.0 : refonte visuelle Feezit, sans nouvelle fonctionnalité Office ni modification métier.
+
 ## 0.6.0 — 2026-10-15
 
 - Alignement sur la livraison produit 0.6.0 : graphiques de statistiques ajoutés au frontend Feezit ; aucun changement métier ni nouvelle migration dans ce composant.
