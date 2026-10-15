@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 — 2026-10-15
+
+- Alignement sur la livraison produit 0.5.0 ; galerie créateur ajoutée à Feezit, sans nouvelle fonctionnalité Office.
+
 ## Non livré — maintenance de la procédure
 
 - Retrait des harnais et recettes supplémentaires demandés par l’utilisateur ; tests unitaires du produit conservés.
