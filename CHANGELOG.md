@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.1 — 2026-10-15
+
+- Alignement de release sur l’optimisation du frontend Feezit ; aucune modification métier Office.
+
 ## 0.7.0 — 2026-10-15
 
 - Alignement sur la livraison produit 0.7.0 : refonte visuelle Feezit, sans nouvelle fonctionnalité Office ni modification métier.
