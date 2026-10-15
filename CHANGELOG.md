@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 — 2026-10-15
+
+- Alignement sur la livraison produit 0.6.0 : graphiques de statistiques ajoutés au frontend Feezit ; aucun changement métier ni nouvelle migration dans ce composant.
+
 ## 0.5.0 — 2026-10-15
 
 - Alignement sur la livraison produit 0.5.0 ; galerie créateur ajoutée à Feezit, sans nouvelle fonctionnalité Office.
