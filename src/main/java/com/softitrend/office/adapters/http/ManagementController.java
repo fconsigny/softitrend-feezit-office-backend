@@ -20,9 +20,41 @@ public class ManagementController {
  public Mono<ResponseEntity<String>> readPromo(ServerWebExchange exchange) {
   return execute(exchange,Mono.empty());
  }
+ @RequestMapping(value="/office-api/management/promos/{id}/banner",
+  method={org.springframework.web.bind.annotation.RequestMethod.GET,org.springframework.web.bind.annotation.RequestMethod.PUT})
+ public Mono<ResponseEntity<String>> banner(ServerWebExchange exchange) {
+  // Only this exact capability bypasses the unchanged 256 KiB String decoder.
+  var body=org.springframework.core.io.buffer.DataBufferUtils.join(exchange.getRequest().getBody(),1_500_000)
+   .map(buffer -> {
+    try { return buffer.toString(java.nio.charset.StandardCharsets.UTF_8); }
+    finally { org.springframework.core.io.buffer.DataBufferUtils.release(buffer); }
+   }).onErrorMap(org.springframework.core.io.buffer.DataBufferLimitException.class,
+    error -> new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.PAYLOAD_TOO_LARGE));
+  return execute(exchange,body);
+ }
  @org.springframework.web.bind.annotation.PutMapping("/office-api/management/promos/{id}/content")
  public Mono<ResponseEntity<String>> updatePromoContent(ServerWebExchange exchange,@RequestBody(required=false) Mono<String> body) {
   return execute(exchange,body);
+ }
+ @org.springframework.web.bind.annotation.PutMapping("/office-api/management/promos/{id}/description")
+ public Mono<ResponseEntity<String>> updatePromoDescription(ServerWebExchange exchange,@RequestBody(required=false) Mono<String> body) {
+  return execute(exchange,body);
+ }
+ @org.springframework.web.bind.annotation.PutMapping("/office-api/management/promos/{id}/destination")
+ public Mono<ResponseEntity<String>> updatePromoDestination(ServerWebExchange exchange,@RequestBody(required=false) Mono<String> body) {
+  return execute(exchange,body);
+ }
+ @org.springframework.web.bind.annotation.GetMapping("/office-api/management/promos/{id}/participation")
+ public Mono<ResponseEntity<String>> readPromoParticipation(ServerWebExchange exchange) {
+  return execute(exchange,Mono.empty());
+ }
+ @org.springframework.web.bind.annotation.GetMapping("/office-api/management/outbox-page")
+ public Mono<ResponseEntity<String>> readOutboxPage(ServerWebExchange exchange) {
+  return execute(exchange,Mono.empty());
+ }
+ @org.springframework.web.bind.annotation.GetMapping("/office-api/management/operations-status")
+ public Mono<ResponseEntity<String>> readOperationsStatus(ServerWebExchange exchange) {
+  return execute(exchange,Mono.empty());
  }
  @RequestMapping({"/office-api/management/brands", "/office-api/management/brands/aliases",
   "/office-api/management/reservations", "/office-api/management/waitlist", "/office-api/management/waitlist/responses",

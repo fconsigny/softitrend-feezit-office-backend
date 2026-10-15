@@ -14,7 +14,29 @@ Le script Maven sélectionne `/home/stellabot/.local/jdk-25.0.2` et `/home/stell
 
 Jar produit : `target/feezit-office-backend-0.1.0-SNAPSHOT.jar`. Le smoke démarre **ce vrai jar**, sur un port loopback libre, avec credentials synthétiques ; il l'arrête dans un `finally`. Par défaut, aucun upstream n'est appelé : il vérifie session/CSRF/login/logout et le refus 503 d'une façade non configurée.
 
-Build initial : **75 tests/gates, zéro échec/erreur**, puis **14 contrôles HTTP du jar**. Vérification finale du parent et build de livraison : **80 tests/gates réussis** (`docs/parent-verification.json`). Les tests `ManagementHttpTest` utilisent un serveur HTTP factice exclusivement dans `src/test` : ils prouvent la frontière Office et le protocole HTTP, **pas les règles ni l'intégration métier du vrai Feezit**. Voir `docs/verification-results.json` et `docs/verification.md`.
+Preuves historiques : build initial **75 tests/gates**, vérification parent initiale **80** (`docs/parent-verification.json`), lot contenu **101** (`docs/promo-content-verification.json`). Elles ne constituent pas les résultats du candidat jury. Les tests `ManagementHttpTest` et `JuryManagementHttpTest` utilisent un serveur HTTP fixture exclusivement dans `src/test`, avec les vrais Netty/WebClient et la vraie sécurité Office : ils prouvent la frontière et le protocole, **pas les règles ni l'intégration métier du vrai Feezit**. Voir `docs/verification.md` pour l'historique et `../jury-release-20261013/implementation-office-backend.md` / `.json` pour les commandes, résultats et limites JR-03.
+
+## Candidat jury — JR-03 (13 octobre 2026)
+
+Extensions strictement additives, même préfixe `/office-api/management` :
+
+| Méthode / chemin | Query admise | Réponse Feezit relayée |
+|---|---|---|
+| PUT `/promos/{UUID}/destination` | aucune | 200 Promo existant ; body `{destinationUrl}`, validations métier 400 / absent 404 dans Feezit |
+| GET `/promos/{UUID}/participation` | aucune | 200 `{promoId,ownerId,agreementReceivedAt,agreementReference,documentVersion,reservationExpiresAt}` ; absent 404 |
+| GET `/outbox-page` | page 0..10000, size 1..100 seulement | 200 `{items,total,page,size}` ; projection camelCase, nulls conservés |
+| GET `/operations-status` | aucune | 200 `{emailTransportEnabled,participationJobsEnabled,observedAt}` |
+
+`q` comptes/promos est limité à 200 caractères, `store` GET attente/réponses à 100, avant upstream et sans troncature. Les règles d'objet JSON/tailles, UUID, méthodes et queries, session/CSRF, secret serveur, erreurs privées, timeout et refus des redirects/retries sont conservées. Les nouveaux GET ne deviennent ni wildcard ni relais d'en-têtes navigateur.
+
+Office ne valide pas à nouveau les règles métier de destination, ne calcule pas les dates d'accord, ne projette pas les tables et ne déduit pas de totaux d'une page. La source reste Feezit. `operations-status` décrit une **configuration**, pas la santé fournisseur, un dernier job ni un email envoyé. Le garde 409 d'attestation manuelle legacy reste ; `email-deliveries` ne représente que les 100 dernières notifications. Aucun fournisseur, stockage/migration ou faux transport ajouté.
+
+Le contrat parent `../jury-release-20261013/release-contract.md` décide le produit 0.3.0 ; la version technique Maven/jar reste **0.1.0-SNAPSHOT**. Aucune livraison JR-03, intégration quatre applications, relecture production ou émission d'email n'est revendiquée par cette tranche Office. Pendant le travail parallèle, lancer les gates lourds et le package sous le verrou partagé :
+
+```sh
+flock ../jury-release-20261013/build.lock scripts/mvn.sh clean verify
+flock ../jury-release-20261013/build.lock scripts/mvn.sh -DskipTests package
+```
 
 ## Configuration serveur
 
@@ -40,7 +62,7 @@ Sans configuration, le service peut démarrer pour ses contrôles locaux, mais a
 
 ## Contrat et sécurité
 
-Le contrat partagé autoritatif est `docs/office-api-contract.md` ; l'inventaire est `docs/requirements-matrix.json`. Ces deux fichiers sont maintenus par le parent et n'ont pas été modifiés par l'implémentation backend.
+Le contrat transport partagé est `docs/office-api-contract.md`, aligné pour JR-03 sur le contrat de release parent. `docs/requirements-matrix.json` conserve l'inventaire initial ; l'audit jury courant est `../jury-release-20261013/requirements-office.md`. La façade ne remplace pas les DTO et validations propriétaires Feezit.
 
 - `GET /office-api/csrf` : `{token,headerName}` ; token Spring session-backed avec handler XOR/BREACH conservé, résolution réactive sans souscription manuelle.
 - `POST /office-api/auth/login` : form-urlencoded `username/password` + header CSRF ; succès 204, refus 401, CSRF absent 403. ID de session changé à la connexion et token CSRF pré-login supprimé.
@@ -50,8 +72,8 @@ Le contrat partagé autoritatif est `docs/office-api-contract.md` ; l'inventaire
 - Budget global de connexion : 10 tentatives/minute, compteur unique à mémoire constante, aucune clé basée sur un header IP fourni par le client. Propriétés internes `office.login.max-attempts` (1..100) et `office.login.window-ms` (1000..3600000). Cela limite aussi les connexions correctes ; ce n'est pas une protection anti-DDoS.
 - Façade exclusivement selon la liste blanche méthode/chemin/UUID. Aucune route `/catalog`, aucun proxy catch-all. Chemins encodés, sous-routes inconnues, méthodes non admises, queries supplémentaires/dupliquées et pagination/dates invalides sont refusés avant Feezit.
 - Enveloppes de mutation JSON validées ; champs métier transmis sans changement de casse. La validation détaillée des DTO et les invariants métier restent dans Feezit, sans duplication ici.
-- Corps entrants et réponses agrégées limités à 256 KiB ; timeout global, connexion et réponse bornés ; pas de redirects ni retries automatiques. Aucun header navigateur, Bearer, cookie, Location ou Set-Cookie upstream n'est relayé.
-- Succès JSON seulement, statut métier conservé (dont 201/202/204). Erreurs 4xx reconstruites `{status,code,message}` sans recopier le texte externe ; 5xx/redirection/réseau/réponse impropre => 502, délai => 504. Un secret management reflété dans une réponse de succès est refusé. Messages volontairement génériques.
+- Corps entrants et réponses agrégées limités à 256 KiB, sauf GET/PUT exacts `promos/{UUID}/banner` : 1 500 000 octets dans chaque sens, sans agrandir les codecs globaux. Cette façade JSON transmet URL/effacement ou import Base64 PNG/JPEG à Feezit, sans DB, décodage d'image ni téléchargement d'URL Office ; voir le contrat API. Timeout global, connexion et réponse bornés ; pas de redirects ni retries automatiques. Aucun header navigateur, Bearer, cookie, Location ou Set-Cookie upstream n'est relayé.
+- Succès JSON avec statut métier conservé ; exceptions existantes 204 vide et POST reports 202 vide, sans autoriser un 200 vide. Erreurs 4xx reconstruites `{status,code,message}` sans recopier le texte externe ; 5xx/redirection/réseau/réponse impropre => 502, délai => 504. Un secret management reflété dans une réponse de succès est refusé, y compris échappé en JSON. Messages volontairement génériques.
 - Réponses privées no-store ; headers de sécurité Spring conservés. Pas de stockage local du secret ou des identifiants côté navigateur.
 
 ## Smoke contre Feezit réellement isolé
@@ -73,8 +95,10 @@ Le secret synthétique attendu par défaut est celui de la fixture smoke ; overr
 - `infrastructure` : composition Spring Security, configuration de connexion et cookies.
 - Gate ArchUnit : domaine indépendant et application sans dépendance vers adapters/infrastructure.
 
-Pas de DB/migration Office, audit durable FO-07, SSO/MFA, rôles d'équipe, transport email ou revenus/KPI inventés. Déploiement autorisé et effectué séparément ; aucun commit/push. Les sessions/rate limits ne sont pas distribués. Les erreurs génériques réduisent les détails de validation présentés dans l'UI. L'intégration métier avec Feezit réel et le frontend relève de la recette isolée du parent ; elle n'est pas revendiquée par le serveur factice de test.
+Pas de DB/migration Office, audit durable FO-07, SSO/MFA, rôles d'équipe, transport email ou revenus/KPI inventés. Le déploiement initial historique est distinct de ce candidat ; aucun commit/push ni déploiement par la tranche JR-03. Les sessions/rate limits ne sont pas distribués. Les erreurs génériques réduisent les détails de validation présentés dans l'UI. L'intégration métier avec Feezit réel et le frontend relève de la recette isolée du parent ; elle n'est pas revendiquée par le serveur fixture de test.
 
-## Production livrée et vérifiée — 12 octobre 2026
+## Historique : livraison initiale — 12 octobre 2026
+
+Le récit ci-dessous est une preuve historique, pas une relecture du runtime ni du candidat jury. L'évolution contenu et ses preuves ultérieures sont référencées séparément dans `docs/evidence/promo-content-real-integration.json` ; l'état de production courant reste à relire par le parent.
 
 `https://office.feezit.softitrend.com`, même serveur que Feezit, backend Docker non-root lié à **127.0.0.1:8089**, projet Compose Office distinct. Compte réel `francois` provisionné hors Git ; secret management uniquement serveur. Reverse proxy HTTPS et certificat dédié actifs, renouvellement avec reload Apache éprouvé. **23 contrôles HTTP publics** réussis : session/CSRF/login/logout et lectures management, sans écriture métier ni émission d’email. **2 vues Chromium publiques** réussies, distinctes de l’authentification HTTP. PostgreSQL Feezit reste V13 ; voisins inchangés. Documentation, sources de livraison, identifiants privés, preuves et limites : `../office-production/README.md` dans le workspace Feezit et note Obsidian `Feezit/Office/feezit-office-deploiement-2026-10-12.md`.

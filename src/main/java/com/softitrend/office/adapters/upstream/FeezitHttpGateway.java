@@ -55,7 +55,14 @@ public class FeezitHttpGateway implements ManagementGateway {
     });
    }
    if(r.headers().contentType().filter(t -> MediaType.APPLICATION_JSON.isCompatibleWith(t)).isEmpty()) return r.releaseBody().thenReturn(unavailable());
-   return r.bodyToMono(String.class).defaultIfEmpty("").map(body -> safeSuccess(status,body));
+   Mono<String> body=route.isBanner()
+    ? org.springframework.core.io.buffer.DataBufferUtils.join(r.bodyToFlux(org.springframework.core.io.buffer.DataBuffer.class),1_500_000)
+     .map(buffer -> {
+      try { return buffer.toString(java.nio.charset.StandardCharsets.UTF_8); }
+      finally { org.springframework.core.io.buffer.DataBufferUtils.release(buffer); }
+     })
+    : r.bodyToMono(String.class);
+   return body.defaultIfEmpty("").map(jsonBody -> safeSuccess(status,jsonBody));
   }).timeout(timeout).onErrorResume(e -> Mono.just(isTimeout(e) ? error(504,"UPSTREAM_TIMEOUT","Feezit ne répond pas dans le délai prévu") : unavailable()));
  }
  private Reply safeSuccess(int status,String body) {
