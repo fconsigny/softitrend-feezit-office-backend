@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.10.0 — 2026-10-16
+
+- Alignement de release sur l’atelier premium Feezit0.10.0 ; aucune nouvelle fonctionnalité métier Office ni modification de ses routes de gestion.
+- Sources versionnées avec la release ; état de déploiement documenté séparément.
+
 ## 0.9.0 — 2026-10-16
 
 - Alignement sur la livraison0.9.0 des contenus créateurs Feezit ; aucune nouvelle fonctionnalité métier Office.
