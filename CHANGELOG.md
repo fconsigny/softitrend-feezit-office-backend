@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.0 — 2026-10-16
+
+- Alignement sur la livraison0.8.0 du studio Feezit ; aucune nouvelle fonctionnalité métier Office.
+
 ## 0.7.1 — 2026-10-15
 
 - Alignement de release sur l’optimisation du frontend Feezit ; aucune modification métier Office.
